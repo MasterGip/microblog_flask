@@ -13,5 +13,5 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://polzovatel:parol@localhost:5432/testdb'
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
-UPLOAD_FOLDER = os.path.join(basedir, 'materials')
+UPLOAD_FOLDER = os.path.join('/home/mg/Рабочий стол/Python/flaskMicroblog/flask', 'materials')
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
