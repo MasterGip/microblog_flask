@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='subscriptions'>
+        {% for user in users %}
+            <div class='user'>
+                <div class='avatar_mini'>
+                      <a href='/user/{{ user.login }}'>
+                            <img src='/avatar/{{ user.login }}'
+                                alt='{{ user.login }}'>
+                      </a>
+                </div>
+                <div class='login_mini'>
+                    <a href='/user/{{ user.login }}'>{{ user.login }}</a>
+                </div>
+                <div class='info_mini'>
+                    About:{{ user.info }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

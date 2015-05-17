@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='password_change'>
+        <form action='/change_password' method='POST'>
+            Old password:
+            <input type='password' name='old_password'><br>
+            New password:
+            <input type='password' name='new_password'><br>
+            New password once again:
+            <input type='password' name='new_password_again'><br>
+            <input type='submit' value='Change!'>
+        </form>
+    </div>
+{% endblock %}

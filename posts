@@ -1,0 +1,10 @@
+﻿DROP TABLE posts;
+SET NAMES 'utf8';
+CREATE TABLE posts(
+id int,
+body varchar(250),
+time_post timestamp,
+user_login varchar(80),
+CONSTRAINT pk_id PRIMARY KEY(id),
+CONSTRAINT fk_login FOREIGN KEY (user_login) REFERENCES login_password(login)
+);

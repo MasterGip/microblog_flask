@@ -1,0 +1,59 @@
+.btn{
+    border: solid black 1px;
+    display:inline-block;
+    background-color: pink;
+
+}
+
+.btn a{
+    text-decoration: none;
+    color:black;
+}
+
+
+.btn:hover{
+    background-color: black;
+    color:white;
+}
+
+.post{
+    border: solid black 1px;
+}
+
+.info_user{
+    margin:6px;
+}
+
+.new_post{
+    margin:6px;
+}
+
+.posts{
+    margin:6px;
+}
+
+.avatar{
+    height: 150px;
+}
+
+.avatar img{
+    width: auto;
+    height: 100%;
+}
+
+.avatar_mini{
+    height: 50px;
+}
+
+.avatar_mini img{
+    width: auto;
+    height: 100%;
+}
+
+.login, .login_mini a{
+    font-weight: bold;
+}
+
+.post{
+    background-color: lightgray;
+}

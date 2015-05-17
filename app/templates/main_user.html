@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='info_user'>
+        <div class='avatar'>
+            <img src='/avatar/{{ user.login }}'
+                 alt='{{ user.login }}'>
+        </div>
+        <div class='change_avatar'>
+            <form action='/load_avatar' method='POST' enctype='multipart/form-data'>
+                <input type='file' name='avatar'>
+                <input type='submit' value='Change avatar'>
+            </form>
+        </div>
+        <div class='username'>
+            {{ user.login }}
+        </div>
+        <div class='info'>
+            <form action='/change_info' method='POST'>
+                <textarea name='info'>{{ user.info }}</textarea><br>
+                <input type='submit' value='Change'>
+            </form>
+        </div>
+    </div>
+    <div class='new_post'>
+        <form action='/post' method='POST'>
+            <textarea name='text_post'>What are you doing now?</textarea><br>
+            <input type='submit' value='!!!POST!!!'>
+        </form>
+    </div>
+    <div class='posts'>
+        {% for post in posts %}
+            <div class='post'>
+                <div class='avatar_mini'>
+                     <a href='/user/{{ user.login }}'>
+                         <img src='/avatar/{{ user.login }}'
+                              alt='{{ user.login }}'>
+                     </a>
+                </div>
+                <div class='login_mini'>
+                    <a href='/user/{{ post.user_login }}'>{{ post.user_login }}</a>({{ post.time_post }}):
+                </div>
+                <div class='post_body'>
+                    {{ post.body }}
+                </div>
+                <div class='delete_post'>
+                    <form action='/delete_post' method='POST'>
+                        <input type='hidden' name='id' value='{{ post.id }}'>
+                        <input type='submit' value='X'>
+                    </form>
+                </div>
+            </div>
+        {% endfor %}
+            <div class='more_posts'>
+                <form action='/user/{{ user.login }}' method='POST'>
+                    <input type='hidden' name='number_of_posts' value='{{ number_of_posts }}'>
+                    <input type='submit' value='More posts'>
+                </form>
+            </div>
+    </div>
+{% endblock %}

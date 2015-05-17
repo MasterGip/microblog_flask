@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='posts'>
+        {% for post in posts %}
+            <div class='post'>
+                <div class='avatar_mini'>
+                     <a href='/user/{{ post.user_login }}'>
+                         <img src='/avatar/{{ post.user_login}}'
+                                alt='{{ post.user_login}}'>
+                     </a>
+                </div>
+                <div class='login_mini'>
+                    <a href='/user/{{ post.user_login }}'>{{ post.user_login }}</a> ({{ post.time_post }}):
+                </div>
+                <div class='post_body'>
+                    {{ post.body }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class='more_posts'>
+                <form action='/feed' method='POST'>
+                    <input type='hidden' name='number_of_posts' value='{{ number_of_posts }}'>
+                    <input type='submit' value='More posts'>
+                </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+﻿DROP TABLE login_password;
+SET NAMES 'UTF8';
+CREATE TABLE login_password(
+login varchar(80),
+password varchar(32) NOT NULL,
+e_mail varchar,
+role int,
+CONSTRAINT pk_login PRIMARY KEY (login),
+CONSTRAINT login_length CHECK (char_length(login) >= 6)
+)

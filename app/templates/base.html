@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }} - microblog</title>
+    {% else %}
+    <title>microblog!</title>
+    {% endif %}
+    <link href='{{ url_for('static', filename='main_style.css') }}' rel='stylesheet'>
+</head>
+<body>
+    <div class='main_menu'>
+        Microblog:
+        <div class='btn'> <a href='/index'>Home</a> </div>
+        <div class='btn'> <a href='/users'>Users</a></div>
+        {% if session.user%}
+            <div class='btn'> <a href='{{ url_for('get_user',
+                                                username=session.user.get('login', '')) }}'>My Page</a>
+            </div>
+            <div class='btn'> <a href='/feed'>Feed</a></div>
+            <div class='btn'> <a href='/user/{{ session['user']['login'] }}/subscriptions'>My Subscriptions</a></div>
+            <div class='btn'> <a href='/settings'>Settings</a></div>
+            <div class='btn'> <a href='/logout'>Exit</a> </div>
+        {% endif %}
+
+        {% if not session.user%}
+            <div class='btn'><a href='/signup'>Sign up</a> </div>
+            <div class='btn'><a href='/login'>Log in</a> </div>
+        {% endif %}
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% if 'user' in session %}
+        <div>User: {{ session.get('user',{}).get('login', None) }}</div>
+    {% endif %}
+{% block content %}{% endblock %}
+</body>
+</html>

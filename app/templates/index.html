@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Hi!</h1>
+<p>New posts:</p>
+    <div class='posts'>
+        {% for post in posts %}
+            <div class='post'>
+                <div class='avatar_mini'>
+                    <a href='/user/{{ post.user_login }}'>
+                        <img src='/avatar/{{ post.user_login }}'
+                            alt='{{ post.user_login }}'>
+                    </a>
+                </div>
+                <div class='login_mini'>
+                    <a href='/user/{{ post.user_login }}'> {{ post.user_login }}</a>({{ post.time_post }}):
+                </div>
+                <div class='post_body'>
+                    {{ post.body }}
+                </div>
+
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

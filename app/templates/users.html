@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='find_user'>
+        Find user:
+        <form action='/find_user' method='post'>
+            <input type='text' name='user'><br>
+            <input type='submit' value='Find'>
+        </form>
+    </div>
+    <div class="users">
+        {% for user in users %}
+            <div class='user'>
+                <div class='avatar_mini'>
+                 <a href='/user/{{ user.login }}'>
+                     <img src='/avatar/{{ user.login }}'
+                        alt='{{ user.login }}'>
+                 </a>
+                </div>
+                <div class='login_mini'>
+                    <a href='/user/{{ user.login }}'>{{ user.login }}</a>
+                </div>
+                <div class='info_mini'>
+                    About:{{ user.info }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class='more'>
+            <form action='/users' method='POST'>
+                <input type='hidden' name='number_of_posts' value='{{ number_of_posts }}'>
+                <input type='submit' value='More users'>
+            </form>
+        </div>
+    </div>
+{% endblock %}
